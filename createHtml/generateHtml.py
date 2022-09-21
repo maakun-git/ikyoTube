@@ -60,6 +60,12 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		}
 		);
 	</script>
+	<style>
+	body {
+		text-size-adjust: 100%;
+		-webkit-text-size-adjust: 100%;
+	}
+	</style>
 </head>'''
 
 	# 
