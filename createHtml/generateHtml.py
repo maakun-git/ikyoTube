@@ -10,8 +10,12 @@ if(False == isExist):
 	sys.exit()
 
 # Excelファイルを開く
-df = pd.read_excel(srcExcelFile, sheet_name='2021AllList', index_col=0, header=0)
-# print(df)
+df2021 = pd.read_excel(srcExcelFile, sheet_name='2021AllList', index_col=0, header=0)
+df2022 = pd.read_excel(srcExcelFile, sheet_name='2022AllList', index_col=0, header=0)
+df = pd.concat([df2021,df2022])  # pd.DataFrame.merge(df2021, df2022)
+#print(df2021)
+#print(df2022)
+#print(df)
 
 # htmlファイルへの出力
 with open("index.html", "w", encoding="utf-8-sig") as fw:
@@ -86,8 +90,14 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		fw.write('\t\t<td>{0}</td>\n'.format(publishday))
 
 		# 分類1,分類2
-		fw.write('\t\t<td>{0}</td>\n'.format(df.iloc[i, 3]))
-		fw.write('\t\t<td>{0}</td>\n'.format(df.iloc[i, 4]))
+		category1 = df.iloc[i, 3]
+		if False == isinstance(category1, str): 
+			category1 = " "
+		category2 = df.iloc[i, 4]
+		if False == isinstance(category2, str): 
+			category2 = " "
+		fw.write('\t\t<td>{0}</td>\n'.format(category1))
+		fw.write('\t\t<td>{0}</td>\n'.format(category2))
 
 		# タイトル URL
 		url = df.iloc[i, 2]
