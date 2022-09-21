@@ -101,7 +101,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		else :
 			strTimetable = " "
 		
-			fw.write('\t\t<td>{0}</td>\n'.format(strTimetable))
+		fw.write('\t\t<td>{0}</td>\n'.format(strTimetable))
 		fw.write("\t</tr>\n")
 
 	fw.write("</tbody></table>\n")
