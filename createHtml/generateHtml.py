@@ -82,7 +82,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write('\t\t<th>分類1</th>\n')
 	fw.write('\t\t<th>分類2</th>\n')
 	fw.write('\t\t<th>タイトル</th>\n')
-	fw.write('\t\t<th>タイムテーブル(楽曲)</th>\n')
+	fw.write('\t\t<th width="40%">タイムテーブル(楽曲)</th>\n')
 	fw.write("\t</tr></thead>\n")
 
 	# 表の中身の書き出し
