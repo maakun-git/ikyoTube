@@ -108,7 +108,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		# タイムテーブル
 		strTimetable = df.iloc[i, 6]
 		if isinstance(strTimetable, str): 
-			strTimetable = re.sub("(\r\n)|(\n)", "<br>", strTimetable) # 改行コードはタグに置換
+			strTimetable = re.sub("(\r\n)|(\n)", "</br>", strTimetable) # 改行コードはタグに置換
 		else :
 			strTimetable = " "
 		
