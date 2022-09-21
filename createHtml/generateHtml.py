@@ -10,9 +10,10 @@ if(False == isExist):
 	sys.exit()
 
 # Excelファイルを開く
+df2020 = pd.read_excel(srcExcelFile, sheet_name='2020AllList', index_col=0, header=0)
 df2021 = pd.read_excel(srcExcelFile, sheet_name='2021AllList', index_col=0, header=0)
 df2022 = pd.read_excel(srcExcelFile, sheet_name='2022AllList', index_col=0, header=0)
-df = pd.concat([df2021,df2022])  # pd.DataFrame.merge(df2021, df2022)
+df = pd.concat([df2020, df2021,df2022])  # pd.DataFrame.merge(df2021, df2022)
 #print(df2021)
 #print(df2022)
 #print(df)
