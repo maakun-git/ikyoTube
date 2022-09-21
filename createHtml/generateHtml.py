@@ -1,5 +1,4 @@
 import pandas as pd
-import math
 import re
 import os
 import sys
@@ -56,11 +55,11 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		}
 		);
 	</script>
-	</head>'''
+</head>'''
 
 	# 
 	fw.write(header)
-	fw.write('<body>\n')
+	fw.write('\n<body>\n')
 	fw.write('<h1 align="center">アイドル教室 Youtube 検索</h1>\n')
 
 	# table
@@ -73,7 +72,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write('\t\t<th>分類2</th>\n')
 	fw.write('\t\t<th>タイトル</th>\n')
 	fw.write('\t\t<th>タイムテーブル(楽曲)</th>\n')
-	fw.write("\t</thead></tr>\n")
+	fw.write("\t</tr></thead>\n")
 
 	# 表の中身の書き出し
 	fw.write("\t<tbody>\n")
@@ -99,6 +98,9 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		strTimetable = df.iloc[i, 6]
 		if isinstance(strTimetable, str): 
 			strTimetable = re.sub("(\r\n)|(\n)", "<br>", strTimetable) # 改行コードはタグに置換
+		else :
+			strTimetable = " "
+		
 			fw.write('\t\t<td>{0}</td>\n'.format(strTimetable))
 		fw.write("\t</tr>\n")
 
