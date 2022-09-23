@@ -83,6 +83,8 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write('<a href="https://www.youtube.com/channel/UCPKzKqWwVWR_ph46bV3ayTA">パスガレ</a> \n')
 	fw.write('</h2>\n')
 
+	fw.write("※メインチャンネルの2020年～2022年9月21日までの分をリストに反映済み<br>")
+	fw.write("※セットリスト抜けてる公演も多数あります<br>")
 
 	# table
 	fw.write('<table id="myTable" class="tablesorter tablesorter-blue">\n')
@@ -90,8 +92,9 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	# 項目名
 	fw.write("\t<thead><tr>\n")
 	fw.write('\t\t<th>日付</th>\n')
-	fw.write('\t\t<th>分類1</th>\n')
-	fw.write('\t\t<th>分類2</th>\n')
+	# 分類分けの抜けが多くて現状はあんまり使えないので非表示にする
+	# fw.write('\t\t<th>分類1</th>\n')
+	# fw.write('\t\t<th>分類2</th>\n')
 	fw.write('\t\t<th>タイトル</th>\n')
 	fw.write('\t\t<th width="40%">タイムテーブル(楽曲)</th>\n')
 	fw.write("\t</tr></thead>\n")
@@ -114,8 +117,10 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		category2 = df.iloc[i, 4]
 		if False == isinstance(category2, str): 
 			category2 = " "
-		fw.write('\t\t<td>{0}</td>\n'.format(category1))
-		fw.write('\t\t<td>{0}</td>\n'.format(category2))
+
+		# 分類分けの抜けが多くて現状はあんまり使えないので非表示にする
+		#fw.write('\t\t<td>{0}</td>\n'.format(category1))
+		#fw.write('\t\t<td>{0}</td>\n'.format(category2))
 
 		# タイトル URL
 		url = df.iloc[i, 2]
