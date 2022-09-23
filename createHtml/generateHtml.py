@@ -10,12 +10,17 @@ if(False == isExist):
 	sys.exit()
 
 # Excelファイルを開く
-dfUntil2018 = pd.read_excel(srcExcelFile, sheet_name='until2018AllList', index_col=0, header=0)
+dfUntil2018 = pd.read_excel(srcExcelFile, sheet_name='until2018AllList',  index_col=0, header=0)
 df2019 = pd.read_excel(srcExcelFile, sheet_name='2019alllist', index_col=0, header=0)
 df2020 = pd.read_excel(srcExcelFile, sheet_name='2020AllList', index_col=0, header=0)
 df2021 = pd.read_excel(srcExcelFile, sheet_name='2021AllList', index_col=0, header=0)
 df2022 = pd.read_excel(srcExcelFile, sheet_name='2022AllList', index_col=0, header=0)
-df = pd.concat([dfUntil2018, df2019, df2020, df2021, df2022])  # pd.DataFrame.merge(df2021, df2022)
+dfsubchannel = pd.read_excel(srcExcelFile, sheet_name='subchannel', index_col=0, header=0)
+dfmusicChannel = pd.read_excel(srcExcelFile, sheet_name='musicChannel', index_col=0, header=0)
+old2ndChannel = pd.read_excel(srcExcelFile, sheet_name='old2ndChannel', index_col=0, header=0)
+dfLover = pd.read_excel(srcExcelFile, sheet_name='Lover', index_col=0, header=0)
+dfPastel = pd.read_excel(srcExcelFile, sheet_name='pastel', index_col=0, header=0)
+df = pd.concat([dfPastel, dfLover, old2ndChannel, dfsubchannel, dfmusicChannel, dfUntil2018, df2019, df2020, df2021, df2022]) 
 #print(df2021)
 #print(df2022)
 #print(df)
@@ -85,7 +90,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write('<a href="https://www.youtube.com/channel/UCPKzKqWwVWR_ph46bV3ayTA">パスガレ</a> \n')
 	fw.write('</h2>\n')
 
-	fw.write("※メインチャンネルの2019年～2022年9月21日までの分をリストに反映済み<br>")
+	fw.write("※2022年9月21日までの分をリストに反映済み<br>")
 	fw.write("※セットリスト抜けてる公演も多数あります<br>")
 
 	# table
@@ -93,7 +98,8 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 
 	# 項目名
 	fw.write("\t<thead><tr>\n")
-	fw.write('\t\t<th>#</th>\n')
+	fw.write('\t\t<th>通し#</th>\n')
+	fw.write('\t\t<th>チャンネル</th>\n')
 	fw.write('\t\t<th>日付</th>\n')
 	# 分類分けの抜けが多くて現状はあんまり使えないので非表示にする
 	# fw.write('\t\t<th>分類1</th>\n')
@@ -109,17 +115,18 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		fw.write("\t<tr>\n")
 
 		fw.write('\t\t<td>{0}</td>\n'.format(i+1))
+		fw.write('\t\t<td>{0}</td>\n'.format(df.iloc[i, 0]))
 
 		# 投稿日
-		val = df.iloc[i, 0]
+		val = df.iloc[i, 1]
 		publishday = pd.Timestamp(val).strftime("%Y/%m/%d")
 		fw.write('\t\t<td>{0}</td>\n'.format(publishday))
 
 		# 分類1,分類2
-		category1 = df.iloc[i, 3]
+		category1 = df.iloc[i, 4]
 		if False == isinstance(category1, str): 
 			category1 = " "
-		category2 = df.iloc[i, 4]
+		category2 = df.iloc[i, 5]
 		if False == isinstance(category2, str): 
 			category2 = " "
 
@@ -128,12 +135,12 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		#fw.write('\t\t<td>{0}</td>\n'.format(category2))
 
 		# タイトル URL
-		url = df.iloc[i, 2]
-		title = df.iloc[i, 5]
+		url = df.iloc[i, 3]
+		title = df.iloc[i, 6]
 		fw.write('\t\t<td><a href="{0}">{1}</a></td>\n'.format(url,title))
 
 		# タイムテーブル
-		strTimetable = df.iloc[i, 6]
+		strTimetable = df.iloc[i, 7]
 		if isinstance(strTimetable, str): 
 			strTimetable = re.sub("(\r\n)|(\n)", "</br>", strTimetable) # 改行コードはタグに置換
 		else :
