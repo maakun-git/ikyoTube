@@ -10,10 +10,12 @@ if(False == isExist):
 	sys.exit()
 
 # Excelファイルを開く
+
+df2019 = pd.read_excel(srcExcelFile, sheet_name='2019alllist', index_col=0, header=0)
 df2020 = pd.read_excel(srcExcelFile, sheet_name='2020AllList', index_col=0, header=0)
 df2021 = pd.read_excel(srcExcelFile, sheet_name='2021AllList', index_col=0, header=0)
 df2022 = pd.read_excel(srcExcelFile, sheet_name='2022AllList', index_col=0, header=0)
-df = pd.concat([df2020, df2021,df2022])  # pd.DataFrame.merge(df2021, df2022)
+df = pd.concat([df2019, df2020, df2021, df2022])  # pd.DataFrame.merge(df2021, df2022)
 #print(df2021)
 #print(df2022)
 #print(df)
@@ -83,7 +85,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write('<a href="https://www.youtube.com/channel/UCPKzKqWwVWR_ph46bV3ayTA">パスガレ</a> \n')
 	fw.write('</h2>\n')
 
-	fw.write("※メインチャンネルの2020年～2022年9月21日までの分をリストに反映済み<br>")
+	fw.write("※メインチャンネルの2019年～2022年9月21日までの分をリストに反映済み<br>")
 	fw.write("※セットリスト抜けてる公演も多数あります<br>")
 
 	# table
