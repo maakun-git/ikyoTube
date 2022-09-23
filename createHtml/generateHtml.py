@@ -68,10 +68,21 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	</style>
 </head>'''
 
-	# 
 	fw.write(header)
-	fw.write('\n<body>\n')
+	
+	# body タイトル等
+	fw.write('\n<body>\n<br>\n')
 	fw.write('<h1 align="center">アイドル教室 Youtube 検索</h1>\n')
+
+	fw.write('<h2 align="center">チャンネル リンク：\n')
+	fw.write('<a href="https://www.youtube.com/c/pops262">メインch</a> \n')
+	fw.write('<a href="https://www.youtube.com/channel/UCJlJX_UnSegdENRPWtOFXLw">2nd</a> \n')
+	fw.write('<a href="https://www.youtube.com/channel/UCkSDNSZxvWCMC_mRhT2z-sQ">music</a> \n')
+	fw.write('<a href="https://www.youtube.com/channel/UCFCwO4zhO84JDUvs8QUDM-w">旧2nd</a> \n')
+	fw.write('<a href="https://www.youtube.com/channel/UCVWpv6M08brx2VfEZC7uOsg">ラバー</a> \n')
+	fw.write('<a href="https://www.youtube.com/channel/UCPKzKqWwVWR_ph46bV3ayTA">パスガレ</a> \n')
+	fw.write('</h2>\n')
+
 
 	# table
 	fw.write('<table id="myTable" class="tablesorter tablesorter-blue">\n')
@@ -88,7 +99,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	# 表の中身の書き出し
 	fw.write("\t<tbody>\n")
 
-	for i in range(len(df)):
+	for i in reversed(range(len(df))):
 		fw.write("\t<tr>\n")
 
 		# 投稿日
@@ -118,7 +129,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		else :
 			strTimetable = " "
 		
-		fw.write('\t\t<td>{0}</td>\n'.format(strTimetable))
+		fw.write('\t\t<td>{0}<br>{1}</td>\n'.format(title,strTimetable))
 		fw.write("\t</tr>\n")
 
 	fw.write("</tbody></table>\n")

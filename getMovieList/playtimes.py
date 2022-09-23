@@ -27,8 +27,16 @@ total = 0
 
 for item in search_response["items"]:
     print('チャンネル名:',item['snippet']['title'])
+
+    # url = "https://www.youtube.com/c/pops262"
+    # url = "https://www.youtube.com/channel/UCJlJX_UnSegdENRPWtOFXLw"
+    
+    if 'customUrl' in item['snippet'] :
+         print('customUrl:',item['snippet']['customUrl'])
+    
+    print('id:',item['id'])
     print('登録者数:',item['statistics']['subscriberCount'],'人')
-    print('投稿動画数:',item['statistics']['videoCount'],'本')
+    print('公開動画数:',item['statistics']['videoCount'],'本')
     print('総再生数:',item['statistics']['viewCount'],'回')
     total = total + int(item['statistics']['videoCount'])
 
