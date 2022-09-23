@@ -127,7 +127,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		# タイトル URL
 		url = df.iloc[i, 2]
 		title = df.iloc[i, 5]
-		fw.write('\t\t<td><a href={0}>{1}</a></td>\n'.format(url,title))
+		fw.write('\t\t<td><a href="{0}">{1}</a></td>\n'.format(url,title))
 
 		# タイムテーブル
 		strTimetable = df.iloc[i, 6]
