@@ -10,12 +10,12 @@ if(False == isExist):
 	sys.exit()
 
 # Excelファイルを開く
-
+dfUntil2018 = pd.read_excel(srcExcelFile, sheet_name='until2018AllList', index_col=0, header=0)
 df2019 = pd.read_excel(srcExcelFile, sheet_name='2019alllist', index_col=0, header=0)
 df2020 = pd.read_excel(srcExcelFile, sheet_name='2020AllList', index_col=0, header=0)
 df2021 = pd.read_excel(srcExcelFile, sheet_name='2021AllList', index_col=0, header=0)
 df2022 = pd.read_excel(srcExcelFile, sheet_name='2022AllList', index_col=0, header=0)
-df = pd.concat([df2019, df2020, df2021, df2022])  # pd.DataFrame.merge(df2021, df2022)
+df = pd.concat([dfUntil2018, df2019, df2020, df2021, df2022])  # pd.DataFrame.merge(df2021, df2022)
 #print(df2021)
 #print(df2022)
 #print(df)
@@ -93,6 +93,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 
 	# 項目名
 	fw.write("\t<thead><tr>\n")
+	fw.write('\t\t<th>#</th>\n')
 	fw.write('\t\t<th>日付</th>\n')
 	# 分類分けの抜けが多くて現状はあんまり使えないので非表示にする
 	# fw.write('\t\t<th>分類1</th>\n')
@@ -106,6 +107,8 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 
 	for i in reversed(range(len(df))):
 		fw.write("\t<tr>\n")
+
+		fw.write('\t\t<td>{0}</td>\n'.format(i+1))
 
 		# 投稿日
 		val = df.iloc[i, 0]
