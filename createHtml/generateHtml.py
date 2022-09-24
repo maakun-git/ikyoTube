@@ -1,7 +1,9 @@
+from http.cookiejar import MozillaCookieJar
 import pandas as pd
 import re
 import os
 import sys
+import mojimoji
 
 # 同じフォルダにあるExcelファイルのパスを作成
 srcExcelFile = os.path.join(os.path.dirname(__file__), 'youtube_list.xlsx')
@@ -145,7 +147,10 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 			strTimetable = re.sub("(\r\n)|(\n)", "</br>", strTimetable) # 改行コードはタグに置換
 		else :
 			strTimetable = " "
-		
+
+		# 全角→半角
+		# https://sy-base.com/myrobotics/python/mojimoji/
+		strTimetable = mojimoji.zen_to_han(strTimetable, kana = False)
 		fw.write('\t\t<td>{0}<br>{1}</td>\n'.format(title,strTimetable))
 		fw.write("\t</tr>\n")
 
