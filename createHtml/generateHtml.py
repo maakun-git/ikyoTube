@@ -74,6 +74,19 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		text-size-adjust: 100%;
 		-webkit-text-size-adjust: 100%;
 	}
+	.description{
+		cursor: pointer;
+		overflow:hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+	}
+	#showtext{
+		display:none;
+	}
+	#showtext:checked ~  .description{
+		display:block;
+	}
 	</style>
 </head>'''
 
@@ -144,7 +157,10 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		# タイムテーブル
 		strTimetable = df.iloc[i, 7]
 		if isinstance(strTimetable, str): 
+			collapsibleStart = '<input type="checkbox" id="showtext"><label for="showtext" class="description"><font color=red>クリック(タップ)でセットリストを開く</font><br>'
 			strTimetable = re.sub("(\r\n)|(\n)", "</br>", strTimetable) # 改行コードはタグに置換
+			collapsibleEnd = '</lavel>'
+			strTimetable = collapsibleStart + strTimetable + collapsibleEnd
 		else :
 			strTimetable = " "
 
