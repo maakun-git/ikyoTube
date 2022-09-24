@@ -99,8 +99,13 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write('<a href="https://www.youtube.com/channel/UCPKzKqWwVWR_ph46bV3ayTA">パスガレ</a> \n')
 	fw.write('</h2>\n')
 
-	fw.write("※2022年9月21日までの分をリストに反映済み<br>")
-	fw.write("※セットリスト抜けてる公演も多数あります<br>")
+	fw.write("※2022年9月24日までの分をリストに反映済み。<br><br>")
+	fw.write("※セットリスト抜けてる公演も多数あります。<br>")
+	fw.write("※全チャンネルの動画を横断的に検索できます。<br>")
+	fw.write("※検索のコツ①…動画タイトルのみで検索する場合は「タイトル」の列で検索。タイムテーブルも含めて検索する場合は「タイムテーブル」の列で検索。<br>")
+	fw.write("※検索のコツ②…曲名の一部分でOKです「SKY OF DREAMS」なら「SKY」で検索できます。<br>")
+	fw.write("※検索のコツ③…メンバー名で検索する際は、漢字やひらがなや愛称など色々ためしてみてください。(「真野」「まの」「福沢」「あすみ」「ありにゃん」など)<br>")
+	
 
 	# table
 	fw.write('<table id="myTable" class="tablesorter tablesorter-blue">\n')
@@ -146,7 +151,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		# タイトル URL
 		url = df.iloc[i, 3]
 		title = df.iloc[i, 6]
-		fw.write('\t\t<td><a href="{0}">{1}</a></td>\n'.format(url,title))
+		fw.write('\t\t<td><a href="{0}" target="_blank">{1}</a></td>\n'.format(url,title))
 
 		# タイムテーブル
 		strTimetable = df.iloc[i, 7]
