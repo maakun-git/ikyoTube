@@ -86,7 +86,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 
 	fw.write(header)
 	
-	# body タイトル等
+	# body  タイトル等 
 	fw.write('\n<body>\n<br>\n')
 	fw.write('<h1 align="center">アイドル教室 Youtube 検索<font size=4> (非公式)</font></h1>\n')
 	
