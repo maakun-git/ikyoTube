@@ -88,8 +88,8 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	
 	# body タイトル等
 	fw.write('\n<body>\n<br>\n')
-	fw.write('<h1 align="center">アイドル教室 Youtube 検索</h1>\n')
-
+	fw.write('<h1 align="center">アイドル教室 Youtube 検索<font size=4> (非公式)</font></h1>\n')
+	
 	fw.write('<h2 align="center">チャンネル リンク：\n')
 	fw.write('<a target="_blank" href="https://www.youtube.com/c/pops262">メインch</a> \n')
 	fw.write('<a target="_blank" href="https://www.youtube.com/channel/UCJlJX_UnSegdENRPWtOFXLw">2nd</a> \n')
@@ -99,13 +99,13 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write('<a target="_blank" href="https://www.youtube.com/channel/UCPKzKqWwVWR_ph46bV3ayTA">パスガレ</a> \n')
 	fw.write('</h2>\n')
 
-	fw.write("※2022年9月24日までの分をリストに反映済み。<br><br>")
-	fw.write("※セットリスト抜けてる公演も多数あります。<br>")
-	fw.write("※全チャンネルの動画を横断的に検索できます。<br>")
-	fw.write("※検索のコツ①…動画タイトルのみで検索する場合は「タイトル」の列で検索。タイムテーブルも含めて検索する場合は「タイムテーブル」の列で検索。<br>")
-	fw.write("※検索のコツ②…曲名の一部分でOKです「SKY OF DREAMS」なら「SKY」で検索できます。<br>")
-	fw.write("※検索のコツ③…メンバー名で検索する際は、漢字やひらがなや愛称など色々ためしてみてください。<br>")
-	fw.write("　　　　　　　　(「真野」「まの」「福沢」「あすみ」「ありす」「ありにゃん」など)<br>")
+	fw.write("※全チャンネルの動画を横断的に検索できます。<br>\n")
+	fw.write("※2022年9月24日までの分をリストに反映済み。<br><br>\n")
+	fw.write("※セットリスト抜けてる公演も多数あります。<br>\n")
+	fw.write("※検索のコツ①…動画タイトルのみで検索する場合は「タイトル」の列で検索。タイムテーブルも含めて検索する場合は「タイムテーブル」の列で検索。<br>\n")
+	fw.write("※検索のコツ②…曲名の一部分でOKです「SKY OF DREAMS」なら「SKY」で検索できます。<br>\n")
+	fw.write("※検索のコツ③…メンバー名で検索する際は、漢字やひらがなや愛称など色々ためしてみてください。<br>\n")
+	fw.write("　　　　　　　　(「真野」「まの」「福沢」「あすみ」「ありす」「ありにゃん」など)<br>\n")
 	
 
 	# table
