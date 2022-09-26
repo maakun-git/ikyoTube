@@ -34,7 +34,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	header = '''<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<title>アイドル教室 Youtube検索 2022.09.17</title>
+	<title>アイドル教室 Youtube検索 (非公式)</title>
 	<!--<head>内-->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
 			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -108,6 +108,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write("(2)曲名の一部分でOKです(「SKY OF DREAMS」なら「SKY」で検索できます)。<br>\n")
 	fw.write("(3)メンバー名で検索する際は、漢字やひらがなや愛称など色々ためしてみてください。<br>\n")
 	fw.write("　　(「真野」「まの」「福沢」「あすみ」「ありす」「ありにゃん」など)<br>\n")
+	fw.write("(4)楽曲名やメンバー名以外のオススメのキーワード・・・「生誕」「コラボ」「ダイジェスト」など(ダイジェストは特にオススメ)<br>\n")
 	
 
 	# table
