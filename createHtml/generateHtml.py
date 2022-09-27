@@ -32,6 +32,15 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	# ヘッダ部
 	fw.write('<html lang="ja">\n')
 	header = '''<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYGMJS93NC"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-PYGMJS93NC');
+	</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<title>アイドル教室 Youtube検索 (非公式)</title>
@@ -100,7 +109,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write('</h3>\n')
 
 	fw.write("※全チャンネルの動画を横断的に検索できます。<br>\n")
-	fw.write("※2022年9月24日までの分をリストに反映済み。<br>\n")
+	fw.write("※2022年9月27日までの分をリストに反映済み。<br>\n")
 	fw.write("※セットリスト抜けてる公演も多数あります。<br><br>\n")
 	fw.write("<b>※検索のコツ</b><br>\n")
 	fw.write("(1)動画タイトルのみで検索する場合は「タイトル」の列で検索。<br>\n")
