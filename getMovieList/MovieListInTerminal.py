@@ -27,7 +27,7 @@ search_response = youtube.search().list(
     channelId= cId[0],  # 取得するチャンネルの要素番号を入れる
     maxResults=200,
     order="date",
-    publishedAfter="2022-09-01T00:00:00Z",
+    publishedAfter="2022-09-20T00:00:00Z",
     publishedBefore="2022-10-01T00:00:00Z"
 ).execute()
 
