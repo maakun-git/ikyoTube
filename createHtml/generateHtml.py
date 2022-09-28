@@ -30,7 +30,7 @@ df = pd.concat([dfPastel, dfLover, old2ndChannel, dfsubchannel, dfmusicChannel, 
 # htmlファイルへの出力
 with open("index.html", "w", encoding="utf-8-sig") as fw:
 	# ヘッダ部
-	fw.write('<html lang="ja">\n')
+	fw.write('<!DOCTYPE html>\n<html lang="ja">\n')
 	header = '''<head>
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYGMJS93NC"></script>
