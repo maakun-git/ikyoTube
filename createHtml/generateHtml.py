@@ -57,6 +57,16 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/widgets/widget-sort2Hash.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/widgets/widget-cssStickyHeaders.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/widgets/widget-columnSelector.min.js"></script>
+	
+	<link  href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
+	<script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
+	</script>
+
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$("#myTable").tablesorter({
@@ -127,7 +137,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write("\t<thead><tr>\n")
 	fw.write('\t\t<th>通し#</th>\n')
 	fw.write('\t\t<th>チャンネル</th>\n')
-	fw.write('\t\t<th>日付</th>\n')
+	fw.write('\t\t<th>日付(サムネ)</th>\n')
 	# 分類分けの抜けが多くて現状はあんまり使えないので非表示にする
 	# fw.write('\t\t<th>分類1</th>\n')
 	# fw.write('\t\t<th>分類2</th>\n')
@@ -149,7 +159,12 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		# 投稿日
 		val = df.iloc[i, 1]
 		publishday = pd.Timestamp(val).strftime("%Y/%m/%d")
-		fw.write('\t\t<td>{0}</td>\n'.format(publishday))
+		movieUrl = df.iloc[i, 3]
+		[baseUrl, movieId] = movieUrl.split("=")
+		linktag = "<td><a href=\"https://img.youtube.com/vi/" + movieId + "/sddefault.jpg\" data-lightbox=\"group\">"
+		linktag += publishday
+		linktag += "</a></td>"
+		fw.write('\t\t{0}\n'.format(linktag))
 
 		# 分類1,分類2
 		category1 = df.iloc[i, 4]
