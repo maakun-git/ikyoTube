@@ -138,6 +138,8 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	# 表の中身の書き出し
 	fw.write("\t<tbody>\n")
 
+	countExistTimeTable = 0
+
 	for i in reversed(range(len(df))):
 		fw.write("\t<tr>\n")
 
@@ -169,6 +171,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		# タイムテーブル
 		strTimetable = df.iloc[i, 7]
 		if isinstance(strTimetable, str): 
+			countExistTimeTable += 1
 			trCss = '<style>#showtext' + str(i) + '{display:none;} #showtext' + str(i) + ':checked ~ .description{display:block;}</style>\r\n'
 			collapsibleStart = '<input type="checkbox" id="showtext' + str(i) + '"><label for="showtext' + str(i) + '" class="description"><font color=red>クリック(タップ)でセットリストを開く</font><br>\r\n'
 			strTimetable = re.sub("(\r\n)|(\n)", "</br>", strTimetable) # 改行コードはタグに置換
@@ -185,3 +188,4 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 
 	fw.write("</tbody></table>\n")
 	fw.write("</html>\n")
+	print(countExistTimeTable, len(df))
