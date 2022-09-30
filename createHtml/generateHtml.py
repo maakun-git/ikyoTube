@@ -58,13 +58,12 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/widgets/widget-cssStickyHeaders.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/widgets/widget-columnSelector.min.js"></script>
 	
-	<link  href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="colorbox/colorbox.css" />
+	<script src="colorbox/jquery.colorbox.js"></script>
 	<script>
-    lightbox.option({
-      'resizeDuration': 200,
-      'wrapAround': true
-    })
+		$(document).ready(function(){
+			$(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+		});
 	</script>
 
 	<script type="text/javascript">
@@ -129,7 +128,6 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 	fw.write("　　(「真野」「まの」「福沢」「あすみ」「ありす」「ありにゃん」など)<br>\n")
 	fw.write("(4)楽曲名やメンバー名以外のオススメのキーワード・・・「生誕」「コラボ」「ダイジェスト」など(ダイジェストは特にオススメ)<br>\n")
 	
-
 	# table
 	fw.write('<table id="myTable" class="tablesorter tablesorter-blue">\n')
 
@@ -156,15 +154,18 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		fw.write('\t\t<td>{0}</td>\n'.format(i+1))
 		fw.write('\t\t<td>{0}</td>\n'.format(df.iloc[i, 0]))
 
+		# 動画ID を取得
+		movieUrl = df.iloc[i, 3]
+		[baseUrl, movieId] = movieUrl.split("=")
+
 		# 投稿日
 		val = df.iloc[i, 1]
 		publishday = pd.Timestamp(val).strftime("%Y/%m/%d")
-		movieUrl = df.iloc[i, 3]
-		[baseUrl, movieId] = movieUrl.split("=")
-		linktag = "<td><a href=\"https://img.youtube.com/vi/" + movieId + "/sddefault.jpg\" data-lightbox=\"group\">"
-		linktag += publishday
-		linktag += "</a></td>"
-		fw.write('\t\t{0}\n'.format(linktag))
+		#linktag = "<td><a href=\"https://img.youtube.com/vi/" + movieId + "/sddefault.jpg\" data-lightbox=\"group\">"
+		#linktag += publishday
+		#linktag += "</a></td>"
+		#fw.write('\t\t{0}\n'.format(publishday))
+		fw.write('\t\t<td>{0}</td>\n'.format(publishday))
 
 		# 分類1,分類2
 		category1 = df.iloc[i, 4]
@@ -181,7 +182,7 @@ with open("index.html", "w", encoding="utf-8-sig") as fw:
 		# タイトル URL
 		url = df.iloc[i, 3]
 		title = df.iloc[i, 6]
-		fw.write('\t\t<td><a href="{0}" target="_blank">{1}</a></td>\n'.format(url,title))
+		fw.write('\t\t<td><a class=\'youtube\' href="http://www.youtube.com/embed/{0}?rel=0&amp;wmode=transparent" title={1}>{2}</a></td>\n'.format(movieId, publishday + " " + title, title))
 
 		# タイムテーブル
 		strTimetable = df.iloc[i, 7]
